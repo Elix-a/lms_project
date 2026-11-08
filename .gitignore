@@ -1,0 +1,120 @@
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+.Python
+build/
+develop-eggs/
+dist/
+downloads/
+eggs/
+.eggs/
+lib/
+lib64/
+parts/
+sdist/
+var/
+wheels/
+share/python-wheels/
+*.egg-info/
+.installed.cfg
+*.egg
+MANIFEST
+
+# ========================================
+# Virtual Environment
+# ========================================
+.env
+.envrc
+.venv
+venv/
+env/
+ENV/
+env.bak/
+venv.bak/
+
+# ========================================
+# Django
+# ========================================
+*.log
+local_settings.py
+db.sqlite3
+db.sqlite3-journal
+/media/
+/staticfiles/
+/static/
+
+# ========================================
+# Testing / Coverage
+# ========================================
+htmlcov/
+.tox/
+.nox/
+.coverage
+.coverage.*
+.cache
+nosetests.xml
+coverage.xml
+*.cover
+*.py.cover
+*.lcov
+.hypothesis/
+.pytest_cache/
+cover/
+
+# ========================================
+# mypy
+# ========================================
+.mypy_cache/
+.dmypy.json
+dmypy.json
+
+# ========================================
+# IDE
+# ========================================
+.idea/
+.vscode/
+*.swp
+*.swo
+*~
+
+# ========================================
+# OS
+# ========================================
+.DS_Store
+Thumbs.db
+Desktop.ini
+
+# ========================================
+# Jupyter Notebook
+# ========================================
+.ipynb_checkpoints
+
+# ========================================
+# PyCharm / JetBrains
+# ========================================
+# .idea/ (уже указан выше)
+*.iml
+*.iws
+*.ipr
+
+# ========================================
+# Poetry / Pipenv / PDM
+# ========================================
+# poetry.lock   # НЕ игнорируем, если используем Poetry
+# Pipfile.lock
+.pdm-python
+.pdm-build/
+
+# ========================================
+# Celery
+# ========================================
+celerybeat-schedule*
+celerybeat.pid
+
+# ========================================
+# Redis / DB
+# ========================================
+*.rdb
+*.aof
+*.pid
