@@ -25,6 +25,7 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     # Сторонние приложения
     'rest_framework',
+    'django_filters',  # НОВОЕ: для фильтрации платежей (Задание 4)
     # Наши приложения
     'users',
     'lms',
@@ -97,5 +98,9 @@ AUTH_USER_MODEL = 'users.User'
 REST_FRAMEWORK = {
     'DEFAULT_PERMISSION_CLASSES': [
         'rest_framework.permissions.AllowAny',
-    ]
+    ],
+    # НОВОЕ: глобальный бэкенд фильтрации для всех ViewSet'ов
+    'DEFAULT_FILTER_BACKENDS': [
+        'django_filters.rest_framework.DjangoFilterBackend',
+    ],
 }
