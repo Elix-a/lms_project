@@ -4,6 +4,7 @@ Django settings for config project.
 
 from pathlib import Path
 import os
+from datetime import timedelta  # НОВОЕ: для настройки времени жизни токенов
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -25,7 +26,8 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     # Сторонние приложения
     'rest_framework',
-    'django_filters',  # НОВОЕ: для фильтрации платежей (Задание 4)
+    'django_filters',
+    'rest_framework_simplejwt',  # НОВОЕ: приложение для JWT
     # Наши приложения
     'users',
     'lms',
@@ -94,13 +96,23 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 # Кастомная модель пользователя
 AUTH_USER_MODEL = 'users.User'
 
-# Настройки DRF (пока без авторизации, чтобы можно было тестировать всё подряд)
+# Настройки DRF
 REST_FRAMEWORK = {
-    'DEFAULT_PERMISSION_CLASSES': [
-        'rest_framework.permissions.AllowAny',
+    # НОВОЕ: Используем JWT для аутентификации
+    'DEFAULT_AUTHENTICATION_CLASSES': [
+        'rest_framework_simplejwt.authentication.JWTAuthentication',
     ],
-    # НОВОЕ: глобальный бэкенд фильтрации для всех ViewSet'ов
+    # НОВОЕ: По умолчанию закрываем ВСЕ эндпоинты (Задание 1)
+    'DEFAULT_PERMISSION_CLASSES': [
+        'rest_framework.permissions.IsAuthenticated',
+    ],
     'DEFAULT_FILTER_BACKENDS': [
         'django_filters.rest_framework.DjangoFilterBackend',
     ],
+}
+
+# НОВОЕ: Настройки JWT-токенов
+SIMPLE_JWT = {
+    'ACCESS_TOKEN_LIFETIME': timedelta(minutes=15),  # Время жизни access-токена
+    'REFRESH_TOKEN_LIFETIME': timedelta(days=1),     # Время жизни refresh-токена
 }
